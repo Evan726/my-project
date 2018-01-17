@@ -3,7 +3,7 @@
     <el-header style="padding: 0">
       <div style="display: flex; flex-direction: row">
         <div class="logo">
-          <router-link to="/index">LOGO</router-link>
+          <router-link to="/index">VUEJS AND ELEMENTUI</router-link>
         </div>
         <div style="flex: 1">
           <el-menu :router=true :default-active="mainDefaultActive" class="el-menu-demo" mode="horizontal">
@@ -79,7 +79,6 @@
     },
     mounted: function () {
       this.navData = nav
-      console.log('1===>', this.$route)
       // const _seft = this
       // 设置默认页导航数据
       for (let i = 0; i < this.navData.length; i++) {

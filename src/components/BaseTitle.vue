@@ -1,8 +1,6 @@
 <template>
   <div class="vue-title">
-    <slot>
-      标题
-    </slot>
+    <slot>标题</slot>
   </div>
 </template>
 
@@ -14,10 +12,8 @@
 
 <style>
   .vue-title {
-    padding:0 15px;
-    height:46px;
+    padding:10px 15px;
     border-bottom: 1px solid #ddd;
-    line-height: 46px;
     font-size: 18px;
   }
 </style>

@@ -1,10 +1,6 @@
 <template>
   <div class="vue-panel">
-    <slot>
-      <div>
-        标题
-      </div>
-    </slot>
+    <slot><span>标题</span></slot>
     <slot>
       只有在没有要分发的内容时才会显示。
     </slot>

@@ -1,43 +1,20 @@
 <template>
   <div>
-    <el-menu :default-active="activeIndex" class="el-menu-demo, vue-menu" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="1">组件首页</el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">公共组件</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-      </el-submenu>
-      <el-submenu index="3">
-        <template slot="title">表单组件</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-      </el-submenu>
-      <el-submenu index="4">
-        <template slot="title">数据列表</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-      </el-submenu>
-      <el-submenu index="5">
-        <template slot="title">消息提示</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-      </el-submenu>
-      <el-submenu index="6">
-        <template slot="title">导航</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-      </el-submenu>
-      <el-submenu index="7">
-        <template slot="title">其他组件</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-      </el-submenu>
+    <el-menu :default-active="activeIndex"  :router="true" class="el-menu-demo, vue-menu" mode="horizontal" @select="handleSelect">
+      <el-menu-item index="home" route="/index/javascript/vue/components">组件首页</el-menu-item>
+      <template v-for="item in menuData">
+        <el-submenu :index="item.navId" >
+          <template slot="title">{{ item.title }}</template>
+          <template v-for="data in item.children">
+            <el-menu-item
+              :index="data.navId"
+              :route='"/index/javascript/vue/components/details/" + data.componentName'
+            >{{ data.title }}</el-menu-item>
+          </template>
+
+        </el-submenu>
+      </template>
+
     </el-menu>
 
     <router-view></router-view>
@@ -50,12 +27,88 @@
 <script>
   export default {
     name: 'ComponentsPage',
-    date: function () {
-      return {}
+    data: function () {
+      return {
+        activeIndex: '',
+        menuData: [{
+          navId: '1',
+          title: '公共组件',
+          children: [{
+            navId: '1-1',
+            title: 'Layout 布局',
+            path: 'details',
+            componentName: 'layout'
+          }, {
+            navId: '1-2',
+            title: 'Container 布局容器',
+            path: 'details',
+            componentName: 'container'
+          }, {
+            navId: '1-3',
+            title: 'Icon 图标',
+            path: 'details',
+            componentName: 'icon'
+          }, {
+            navId: '1-4',
+            title: 'Button 按钮',
+            path: 'details',
+            componentName: 'button'
+          }]
+        }, {
+          navId: '2',
+          title: '表单组件',
+          children: [{
+            navId: '2-1',
+            title: 'Radio 单选框',
+            path: 'details',
+            componentName: 'radio'
+          }, {
+            navId: '2-2',
+            title: 'Checkbox 多选框',
+            path: 'details',
+            componentName: 'checkbox'
+          }, {
+            navId: '2-3',
+            title: 'Input 输入框',
+            path: 'details',
+            componentName: 'input'
+          }, {
+            navId: '2-4',
+            title: 'InputNumber 计数器',
+            path: 'details',
+            componentName: 'inputnumber'
+          }, {
+            navId: '2-5',
+            title: 'Select 选择器',
+            path: 'details',
+            componentName: 'select'
+          }]
+        }]
+      }
     },
     components: {},
-    mounted: function () {},
-    methods: {}
+    mounted: function () {
+      // 判断是否有componentName参数 并设置导航高亮
+      if (this.$route.params.componentName) {
+        for (let i = 0; i < this.menuData.length; i++) {
+          const data = this.menuData[i].children
+          for (let ii = 0; ii < data.length; ii++) {
+            if (data[ii].componentName === this.$route.params.componentName) {
+              this.activeIndex = data[ii].navId
+              break
+            }
+          }
+        }
+      } else {
+        this.activeIndex = 'home'
+      }
+    },
+    methods: {
+      handleSelect: function (key, keyPath) {
+          // console.log('1===>222', key, keyPath)
+      }
+    },
+    watch: {}
   }
 </script>
 

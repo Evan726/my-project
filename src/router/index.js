@@ -10,6 +10,7 @@ import ResourcesPage from '@/pages/ResourcesPage.vue'
 import ResourcesDetailsPage from '@/pages/ResourcesDetailsPage.vue'
 import ComponentsPage from '@/pages/ComponentsPage.vue'
 import VueComponentsIndexPage from '@/pages/VueComponentsIndexPage.vue'
+import VueComponentsDetailsPage from '@/pages/VueComponentsDetailsPage.vue'
 
 Vue.use(Router)
 
@@ -45,6 +46,10 @@ export default new Router({
           path: '',
           name: 'VueComponentsIndexPage',
           component: VueComponentsIndexPage
+        }, {
+          path: 'details/:componentName',
+          name: 'VueComponentsDetailsPage',
+          component: VueComponentsDetailsPage
         }]
       }]
     }
