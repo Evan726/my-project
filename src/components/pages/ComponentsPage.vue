@@ -1,14 +1,14 @@
 <template>
   <div>
     <el-menu :default-active="activeIndex"  :router="true" class="el-menu-demo, vue-menu" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="home" route="/index/javascript/vue/components">组件首页</el-menu-item>
+      <el-menu-item index="home" route="/index/1/components/1-1-3/">组件首页</el-menu-item>
       <template v-for="item in menuData">
         <el-submenu :index="item.navId" >
           <template slot="title">{{ item.title }}</template>
           <template v-for="data in item.children">
             <el-menu-item
               :index="data.navId"
-              :route='"/index/javascript/vue/components/details/" + data.componentName'
+              :route='"/index/1/components/1-1-3/details/" + data.componentName'
             >{{ data.title }}</el-menu-item>
           </template>
 

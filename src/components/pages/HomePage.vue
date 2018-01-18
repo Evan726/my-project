@@ -1,10 +1,10 @@
 <template>
-  <div>资料列表</div>
+  <div>组件首页</div>
 </template>
 
 <script>
   export default {
-    name: 'ResourcesPage'
+    name: 'HomePage'
   }
 </script>
 

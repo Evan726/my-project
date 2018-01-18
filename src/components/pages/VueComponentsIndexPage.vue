@@ -56,8 +56,8 @@
 
 <script>
   import echarts from 'echarts'
-  import BaseContent from '../components/BaseContent.vue'
-  import BaseTitle from '../components/BaseTitle.vue'
+  import BaseContent from '../base/BaseContent.vue'
+  import BaseTitle from '../base/BaseTitle.vue'
 
   export default {
     name: 'VueComponentsIndexPage',

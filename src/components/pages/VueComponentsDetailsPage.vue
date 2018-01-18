@@ -13,16 +13,16 @@
 </template>
 
 <script>
-  import BaseLayout from '../components/vue/BaseLayout.vue'
-  import BaseContainer from '../components/vue/BaseContainer.vue'
-  import BaseIcon from '../components/vue/BaseIcon.vue'
-  import BaseButton from '../components/vue/BaseButton.vue'
+  import BaseLayout from '../vue/BaseLayout.vue'
+  import BaseContainer from '../vue/BaseContainer.vue'
+  import BaseIcon from '../vue/BaseIcon.vue'
+  import BaseButton from '../vue/BaseButton.vue'
 
-  import FormRadio from '../components/vue/FormRadio.vue'
-  import FormCheckbox from '../components/vue/FormCheckbox.vue'
-  import FormInput from '../components/vue/FormInput.vue'
-  import FormInputNumber from '../components/vue/FormInputNumber.vue'
-  import FormSelect from '../components/vue/FormSelect.vue'
+  import FormRadio from '../vue/FormRadio.vue'
+  import FormCheckbox from '../vue/FormCheckbox.vue'
+  import FormInput from '../vue/FormInput.vue'
+  import FormInputNumber from '../vue/FormInputNumber.vue'
+  import FormSelect from '../vue/FormSelect.vue'
 
   export default {
     name: 'VueComponentsDetailsPage',

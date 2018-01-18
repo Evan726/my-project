@@ -268,7 +268,7 @@
 </template>
 
 <script>
-  import BaseTitle from '../BaseTitle.vue'
+  import BaseTitle from '../base/BaseTitle.vue'
 
   export default {
     name: 'BaseLayout',

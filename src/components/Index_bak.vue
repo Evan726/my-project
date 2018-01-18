@@ -11,12 +11,14 @@
               :index="item.navId"
               :key="item.navId"
               v-for="item in navData"
-              :route="{path: item.route}"> {{ item.title }}
+              :route="{path: '/index/' + item.route}"> {{ item.title }}
             </el-menu-item>
           </el-menu>
         </div>
       </div>
     </el-header>
+
+    <route-view></route-view>
 
     <el-container v-bind:style="{height: clientHeight + 'px' }">
       <el-aside width="200px" v-bind:style="{height: clientHeight + 'px' }"
@@ -37,8 +39,6 @@
               </el-menu-item>
             </el-submenu>
           </template>
-
-
         </el-menu>
       </el-aside>
 
@@ -73,33 +73,47 @@
         openNav: [],
         mainDefaultActive: '',
         sideDefaultActive: '',
-        sideDataIndex: 0,
+        sideDataIndex: 1,
         navData: []
       }
     },
     mounted: function () {
       this.navData = nav
+
+      function mainNav (id) {
+        console.log('1===>', id)
+      }
+      console.log('1===>', this.$route)
+      if (this.$route.params.oneClassId) {
+        this.mainDefaultActive = this.$route.params.oneClassId
+        this.sideDataIndex = this.$route.params.oneClassId
+        mainNav (this.$route.params.oneClassId)
+      } else {
+        this.mainDefaultActive = nav[0].navId
+        this.sideDataIndex = nav[0].navId
+        mainNav (nav[0].navId)
+      }
       // const _seft = this
       // 设置默认页导航数据
-      for (let i = 0; i < this.navData.length; i++) {
-        if (this.navData[i].bigName === this.$route.params.bigName) {
-          this.sideDataIndex = i
-          this.mainDefaultActive = this.navData[i].navId
-          const sideData = this.navData[i].children
-          for (let ii = 0; ii < sideData.length; ii++) {
-            if (sideData[ii].smallName === this.$route.params.smallName) {
-              this.openNav = [sideData[ii].navId]
-              // 设置side导航选中项
-              const sideList = sideData[ii].children
-              for (let iii = 0; iii < sideList.length; iii++) {
-                if (sideList[iii].route === this.$route.path) {
-                  this.sideDefaultActive = sideList[iii].navId
-                }
-              }
-            }
-          }
-        }
-      }
+//      for (let i = 0; i < this.navData.length; i++) {
+//        if (this.navData[i].bigName === this.$route.params.bigName) {
+//          this.sideDataIndex = i
+//          this.mainDefaultActive = this.navData[i].navId
+//          const sideData = this.navData[i].children
+//          for (let ii = 0; ii < sideData.length; ii++) {
+//            if (sideData[ii].smallName === this.$route.params.smallName) {
+//              this.openNav = [sideData[ii].navId]
+//              // 设置side导航选中项
+//              const sideList = sideData[ii].children
+//              for (let iii = 0; iii < sideList.length; iii++) {
+//                if (sideList[iii].route === this.$route.path) {
+//                  this.sideDefaultActive = sideList[iii].navId
+//                }
+//              }
+//            }
+//          }
+//        }
+//      }
 
       // 首先在渲染页面后，设置下主区域的高度．
       this.clientHeight = document.body.clientHeight - 60
@@ -112,26 +126,40 @@
 
     watch: {
       '$route' (to, tofrom) {
-        // 监听路由变化
-        for (let i = 0; i < this.navData.length; i++) {
-          if (this.navData[i].bigName === to.params.bigName) {
-            this.sideDataIndex = i
-            this.mainDefaultActive = this.navData[i].navId
-            const sideData = this.navData[i].children
-            for (let ii = 0; ii < sideData.length; ii++) {
-              if (sideData[ii].smallName === to.params.smallName) {
-                this.openNav = [sideData[ii].navId]
-                // 设置side导航选中项
-                const sideList = sideData[ii].children
-                for (let iii = 0; iii < sideList.length; iii++) {
-                  if (sideList[iii].route === to.path) {
-                    this.sideDefaultActive = sideList[iii].navId
-                  }
-                }
-              }
-            }
-          }
+
+        function mainNav (id) {
+          console.log('1===>', id)
         }
+        console.log('1===>', this.$route)
+        if (this.$route.params.oneClassId) {
+          this.mainDefaultActive = to.params.oneClassId
+          this.sideDataIndex = to.params.oneClassId
+          mainNav (this.$route.params.oneClassId)
+        } else {
+          this.mainDefaultActive = nav[0].navId
+          this.sideDataIndex = nav[0].navId
+          mainNav (nav[0].navId)
+        }
+        // 监听路由变化
+//        for (let i = 0; i < this.navData.length; i++) {
+//          if (this.navData[i].bigName === to.params.bigName) {
+//            this.sideDataIndex = i
+//            this.mainDefaultActive = this.navData[i].navId
+//            const sideData = this.navData[i].children
+//            for (let ii = 0; ii < sideData.length; ii++) {
+//              if (sideData[ii].smallName === to.params.smallName) {
+//                this.openNav = [sideData[ii].navId]
+//                // 设置side导航选中项
+//                const sideList = sideData[ii].children
+//                for (let iii = 0; iii < sideList.length; iii++) {
+//                  if (sideList[iii].route === to.path) {
+//                    this.sideDefaultActive = sideList[iii].navId
+//                  }
+//                }
+//              }
+//            }
+//          }
+//        }
       }
     },
     methods: {
@@ -149,6 +177,7 @@
   }
 
   .logo {
+    height: 60px;
     flex-basis: 200px;
     background-color: #409EFF;
   }

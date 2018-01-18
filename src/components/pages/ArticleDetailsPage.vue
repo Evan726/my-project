@@ -1,10 +1,10 @@
 <template>
-  <div>资料详情</div>
+  <div>列表详情</div>
 </template>
 
 <script>
   export default {
-    name: 'ResourcesDetailsPage'
+    name: 'ArticleDetailsPage'
   }
 </script>
 

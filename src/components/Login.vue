@@ -1,6 +1,9 @@
 <template>
   <div class="login_bg">
     <div class="loginBox">
+      <div class = "login-logo">
+        <h1>VueJs and Element</h1>
+      </div>
       <el-form :model="ruleForm2" ref="ruleForm2">
         <el-form-item >
           <el-input
@@ -16,10 +19,12 @@
             v-model="password">
           </el-input>
         </el-form-item>
-        <el-button type="primary">登录</el-button>
+        <el-button type="primary"
+                   @click="submitForm('ruleForm2')"
+                   class="btn-block">登录</el-button>
       </el-form>
 
-      <router-link to="/index/javascript/vue/article">登录</router-link>
+
     </div>
 
   </div>
@@ -32,6 +37,11 @@
       return {
         username: '',
         password: ''
+      }
+    },
+    methods: {
+      submitForm: function (formName) {
+        this.$router.push('/index')
       }
     }
   }
@@ -51,14 +61,27 @@
     justify-content: center;
     align-items: center;
   }
-
+  .login-logo{
+    position: absolute;
+    margin-top: -130px;
+    margin-left: -80px;
+    width: 460px;
+  }
+  .login-logo h1{
+    color: #fff;
+    font-size: 42px;
+    text-align: center;
+  }
+  .btn-block{
+    width: 100%;
+  }
   .loginBox {
-    height: 300px;
-    width: 400px;
-    background: RGBA(255, 255, 255, 0.2);
-    border-radius: 4px;
+
+    width: 300px;
+    background: RGBA(255, 255, 255, 1);
+    border-radius: 8px;
     border-bottom: 1px solid #2090ff;
     margin-top: -50px;
-    padding: 50px;
+    padding: 60px 80px;
   }
 </style>

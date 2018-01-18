@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Login from '@/components/Login.vue'
-import Index from '@/components/Index.vue'
-import MainPage from '@/components/MainPage.vue'
-//  import HomePage from '@/components/pages/HomePage.vue'
+import Login from '@/components/pages/Login.vue'
+
+import Index from '@/components/pages/Index.vue'
+import HomePage from '@/components/pages/MainPage.vue'
 import ArticlePage from '@/components/pages/ArticlePage.vue'
 import ArticleDetailsPage from '@/components/pages/ArticleDetailsPage.vue'
+import ResourcesPage from '@/components/pages/ResourcesPage.vue'
+import ResourcesDetailsPage from '@/components/pages/ResourcesDetailsPage.vue'
 import ComponentsPage from '@/components/pages/ComponentsPage.vue'
 import VueComponentsIndexPage from '@/components/pages/VueComponentsIndexPage.vue'
 import VueComponentsDetailsPage from '@/components/pages/VueComponentsDetailsPage.vue'
@@ -22,29 +24,44 @@ export default new Router({
     }, {
       path: '/index',
       name: 'Index',
+      component: Index
+    }, {
+      path: '/index/:oneClassId/',
       component: Index,
       children: [{
-        path: '/index/:pages',
-        name: 'MainPage',
-        component: MainPage,
+        path: 'index',
+        name: 'HomePage',
+        component: HomePage,
         children: [
           {
-            path: 'article/:componentId',
+            path: 'article',
             name: 'ArticlePage',
             component: ArticlePage
           }, {
-            path: 'articledetails/:componentId',
+            path: 'article/:towClassId',
+            name: 'ArticlePage',
+            component: ArticlePage
+          }, {
+            path: 'articledetails',
             name: 'ArticleDetailsPage',
             component: ArticleDetailsPage
           }, {
-            path: 'components/:componentId',
+            path: 'articledetails/:towClassId',
+            name: 'ArticleDetailsPage',
+            component: ArticleDetailsPage
+          }, {
+            path: 'components/',
+            name: 'ArticleDetailsPage',
+            component: ComponentsPage
+          }, {
+            path: 'components/:towClassId',
             component: ComponentsPage,
             children: [{
               path: '',
               name: 'VueComponentsIndexPage',
               component: VueComponentsIndexPage
             }, {
-              path: 'details/:componentName',
+              path: 'details',
               name: 'VueComponentsDetailsPage',
               component: VueComponentsDetailsPage
             }]
