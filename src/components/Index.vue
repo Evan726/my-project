@@ -32,7 +32,6 @@
   import nav from '../data/navData'
   import IndexPage from './pages/IndexPage.vue'
   export default {
-    components: {IndexPage},
     name: 'Index',
     data: function () {
       return {

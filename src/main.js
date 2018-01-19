@@ -6,14 +6,18 @@ import router from './router'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import VueResource from 'vue-resource'
 
 import WeVue from 'we-vue'
 import 'we-vue/lib/style.css'
 
 Vue.config.productionTip = false
+
+Vue.use(VueResource)
 Vue.use(ElementUI)
 Vue.use(WeVue)
 /* eslint-disable no-new */
+
 new Vue({
   el: '#app',
   router,
