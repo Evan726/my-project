@@ -10,13 +10,23 @@ import VueResource from 'vue-resource'
 
 import WeVue from 'we-vue'
 import 'we-vue/lib/style.css'
-
+import bus from './bus'
 Vue.config.productionTip = false
 
 Vue.use(VueResource)
 Vue.use(ElementUI)
 Vue.use(WeVue)
 /* eslint-disable no-new */
+
+Vue.http.interceptors.push((request, next) => {
+  console.log('1===this', 1)
+  bus.$emit('Loading', true)
+  next((response) => {
+    console.log('1===this', 2)
+    bus.$emit('Loading', false)
+    return response
+  })
+})
 
 new Vue({
   el: '#app',

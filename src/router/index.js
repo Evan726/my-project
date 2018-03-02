@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Login from '@/components/Login.vue'
-import Index from '@/components/Index.vue'
-import MainPage from '@/components/MainPage.vue'
-//  import HomePage from '@/components/pages/HomePage.vue'
-import ArticlePage from '@/components/pages/ArticlePage.vue'
-import ArticleDetailsPage from '@/components/pages/ArticleDetailsPage.vue'
-import ComponentsPage from '@/components/pages/ComponentsPage.vue'
-import VueComponentsIndexPage from '@/components/pages/VueComponentsIndexPage.vue'
-import VueComponentsDetailsPage from '@/components/pages/VueComponentsDetailsPage.vue'
+import Login from '@/pages/Login.vue'
+import Index from '@/pages/index.vue'
+import MainPage from '@/pages/MainPage.vue'
+//  import HomePage from '@/pages/pages/HomePage.vue'
+import ArticlePage from '@/pages/pages/ArticlePage.vue'
+import ArticleDetailsPage from '@/pages/pages/ArticleDetailsPage.vue'
+import ComponentsPage from '@/pages/pages/ComponentsPage.vue'
+import VueComponentsIndexPage from '@/pages/pages/VueComponentsIndexPage.vue'
+import VueComponentsDetailsPage from '@/pages/pages/VueComponentsDetailsPage.vue'
 
 Vue.use(Router)
 

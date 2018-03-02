@@ -54,7 +54,7 @@ export default [{
     }, {
       navId: '1-3-3',
       title: '组件',
-      route: 'components'
+      route: 'pages'
     }]
   }, {
     navId: '1-4',
